@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Poppins', sans-serif; color: #0d0d10; background: #fff; }
+  section[id] { scroll-margin-top: 5rem; }
+}
+
+/* Services ticker */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-track { animation: ticker-scroll 32s linear infinite; }
+
+/* Hero ghost word */
+@keyframes ghost-pulse {
+  0%, 100% { opacity: .05; transform: scale(1); }
+  50% { opacity: .09; transform: scale(1.015); }
+}
+.ghost-word { animation: ghost-pulse 5s ease-in-out infinite; }
+
+/* Hero entrance */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-in { animation: hero-in .8s ease-out both; }
+.hero-in-1 { animation-delay: .05s; }
+.hero-in-2 { animation-delay: .18s; }
+.hero-in-3 { animation-delay: .3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track, .ghost-word, .hero-in { animation: none !important; }
+}
+
+/* Capability row sliding hover fill */
+.cap-row { position: relative; overflow: hidden; transition: padding-left .3s ease; }
+.cap-row::before {
+  content: ''; position: absolute; inset: 0; background: #faf7fd;
+  width: 0; transition: width .4s ease; z-index: 0;
+}
+.cap-row:hover::before { width: 100%; }
+.cap-row:hover { padding-left: 14px; }
+.cap-row > * { position: relative; z-index: 1; }
+
+/* Team card top-line reveal on hover */
+.team-card { position: relative; overflow: hidden; }
+.team-card::before {
+  content: ''; position: absolute; top: -2px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #0A3D7A, #22A454);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.team-card:hover::before { transform: scaleX(1); }
+
+/* Nav link underline */
+.nav-link { position: relative; padding-bottom: 3px; }
+.nav-link::after {
+  content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
+  background: #0B6FC9; transition: width .25s ease;
+}
+.nav-link:hover::after { width: 100%; }
