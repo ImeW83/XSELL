@@ -5,7 +5,7 @@
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'Poppins', sans-serif; color: #0d0d10; background: #fff; }
+  body { margin: 0; font-family: 'Space Grotesk', sans-serif; color: #0d0d10; background: #fff; }
   section[id] { scroll-margin-top: 5rem; }
 }
 
@@ -33,8 +33,54 @@
 .hero-in-2 { animation-delay: .18s; }
 .hero-in-3 { animation-delay: .3s; }
 
+/* Hero rotating word */
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(40%); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.hero-word {
+  background: linear-gradient(90deg, #0E7FE1, #22A454);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-bottom: .08em;
+  animation: hero-word .6s cubic-bezier(.2,.8,.2,1) both;
+}
+
+/* Hero underline draw */
+@keyframes hero-underline { from { stroke-dashoffset: 260; } to { stroke-dashoffset: 0; } }
+.hero-underline path { stroke-dasharray: 260; animation: hero-underline 1.2s .7s ease-out both; }
+
+/* Hero glow blobs, orbit and badge */
+@keyframes hero-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 30px) scale(1.1); }
+}
+.hero-blob-1 { animation: hero-blob 14s ease-in-out infinite; }
+.hero-blob-2 { animation: hero-blob 18s ease-in-out infinite reverse; }
+
+@keyframes hero-spin { to { transform: rotate(360deg); } }
+.hero-spin { animation: hero-spin 12s linear infinite; }
+.hero-spin-rev { animation: hero-spin 30s linear infinite reverse; }
+
+@keyframes hero-float {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -10px; }
+}
+.hero-float { animation: hero-float 6s ease-in-out infinite; }
+
+@keyframes hero-ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+.hero-ping { animation: hero-ping 1.6s cubic-bezier(0,0,.2,1) infinite; }
+
+@keyframes hero-scroll {
+  0% { opacity: 0; transform: translateY(0); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+.hero-scroll { animation: hero-scroll 1.8s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track, .ghost-word, .hero-in { animation: none !important; }
+  .ticker-track, .ghost-word, .hero-in, .hero-word, .hero-underline path,
+  .hero-blob-1, .hero-blob-2, .hero-spin, .hero-spin-rev, .hero-float,
+  .hero-ping, .hero-scroll { animation: none !important; }
 }
 
 /* Capability row sliding hover fill */
