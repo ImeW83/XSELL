@@ -4,15 +4,15 @@ const GHOST_WORDS = ['BUILD', 'CREATE', 'IMAGINE', 'INNOVATE'];
 
 // Cycles through the background hero word. Mirrors Endermonks' original
 // Hero.jsx ghost-word effect, pulled out as a reusable hook.
-export function useGhostWord(intervalMs = 3800) {
+export function useGhostWord(intervalMs = 3800, words = GHOST_WORDS) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % GHOST_WORDS.length);
+      setIndex((i) => (i + 1) % words.length);
     }, intervalMs);
     return () => clearInterval(timer);
-  }, [intervalMs]);
+  }, [intervalMs, words.length]);
 
-  return GHOST_WORDS[index];
+  return words[index % words.length];
 }
