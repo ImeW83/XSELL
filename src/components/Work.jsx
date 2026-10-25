@@ -2,7 +2,7 @@ import { projects, themes } from '../data/projects';
 
 export default function Work() {
   return (
-    <section id="work" className="px-[clamp(20px,3.5vw,48px)] py-24 bg-[#fafafa] border-t border-b border-line">
+    <section id="work" className="px-[clamp(20px,3.5vw,48px)] py-24 work-bg border-t border-b border-line">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold tracking-[0.14em] uppercase text-accent-blue">— PORTFOLIO</span>

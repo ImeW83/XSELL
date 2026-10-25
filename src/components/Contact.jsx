@@ -29,9 +29,9 @@ export default function Contact() {
       <div className="max-w-[860px] mx-auto">
         <span className="text-xs font-bold tracking-[0.14em] uppercase text-accent-blue">— CONTACT</span>
         <h2 className="font-extrabold text-ink mt-2 mb-4" style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>
-          Let's build something
+          Let's build
           <br />
-          legendary.
+          what's next.
         </h2>
         <p className="text-base leading-relaxed text-body mb-11">
           Tell us about your project and we'll come back to you within 24 hours.
