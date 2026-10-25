@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Logo from './Logo';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -10,16 +11,29 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Transparent over the dark hero; solid white once scrolled or when the mobile menu is open
+  const solid = scrolled || open;
+  const linkColor = solid ? 'text-ink hover:text-accent-blue' : 'text-white hover:text-[#8fb3dc]';
+  const iconColor = solid ? '#0d0d10' : '#fff';
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-line">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 border-b ${
+        solid ? 'bg-white border-line' : 'bg-transparent border-transparent'
+      }`}
+    >
       <div className="max-w-[1280px] mx-auto px-[clamp(20px,3.5vw,48px)] py-4 flex items-center justify-between gap-6">
-        <a href="#hero" aria-label="XSell — back to top" className="flex items-center gap-2">
-          <svg width="27" height="24" viewBox="0 0 90 80" aria-hidden="true">
-            <path d="M14 72 L60 24 M44 18 L64 18 L64 38" stroke="#22A454" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <line x1="14" y1="16" x2="76" y2="72" stroke="#0E7FE1" strokeWidth="9" strokeLinecap="round" />
-          </svg>
-          <span className="font-extrabold text-xl text-accent-blue">Sell</span>
+        <a href="#hero" aria-label="XSELL — back to top">
+          <Logo />
         </a>
 
         <nav className="hidden md:flex items-center gap-7">
@@ -27,14 +41,14 @@ export default function Navbar() {
             <a
               key={n.label}
               href={n.href}
-              className="nav-link font-semibold text-sm text-ink hover:text-accent-blue transition-colors"
+              className={`nav-link font-semibold text-sm ${linkColor} transition-colors`}
             >
               {n.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="bg-gradient-to-br from-hero-start to-accent-blue text-white font-bold text-xs tracking-wider uppercase px-6 py-3 hover:opacity-90 transition-opacity"
+            className="bg-[#1F88E4] text-white font-semibold text-[0.8rem] px-[22px] py-[11px] rounded-full shadow-[0_10px_24px_-10px_rgba(31,136,228,.8)] hover:opacity-90 transition-opacity"
           >
             Start a Project
           </a>
@@ -48,9 +62,9 @@ export default function Navbar() {
           className="md:hidden flex items-center justify-center p-3"
         >
           <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true">
-            <line x1="0" y1="1" x2="22" y2="1" stroke="#0d0d10" strokeWidth="2" />
-            <line x1="0" y1="8" x2="22" y2="8" stroke="#0d0d10" strokeWidth="2" />
-            <line x1="0" y1="15" x2="22" y2="15" stroke="#0d0d10" strokeWidth="2" />
+            <line x1="0" y1="1" x2="22" y2="1" stroke={iconColor} strokeWidth="2" />
+            <line x1="0" y1="8" x2="22" y2="8" stroke={iconColor} strokeWidth="2" />
+            <line x1="0" y1="15" x2="22" y2="15" stroke={iconColor} strokeWidth="2" />
           </svg>
         </button>
       </div>
@@ -70,7 +84,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="mt-4 text-center bg-gradient-to-br from-hero-start to-accent-blue text-white font-bold text-xs tracking-wider uppercase px-6 py-4"
+            className="mt-4 text-center bg-[#1F88E4] text-white font-semibold text-sm px-6 py-4 rounded-full"
           >
             Start a Project
           </a>

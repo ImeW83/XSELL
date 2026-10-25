@@ -1,4 +1,5 @@
 import { services } from './Capabilities';
+import Logo from './Logo';
 
 const navLinks = ['Services', 'Work', 'Team', 'Stack', 'Contact'];
 const footerSocials = [
@@ -13,15 +14,7 @@ export default function Footer() {
     <footer className="bg-black px-[clamp(20px,3.5vw,48px)] pt-16 pb-7">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-10">
-          <div className="flex items-center gap-2 mb-3.5">
-            <svg width="27" height="24" viewBox="0 0 90 80" aria-hidden="true">
-              <path d="M14 72 L60 24 M44 18 L64 18 L64 38" stroke="#22A454" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-              <line x1="14" y1="16" x2="76" y2="72" stroke="#0E7FE1" strokeWidth="9" strokeLinecap="round" />
-            </svg>
-            <span className="font-extrabold text-xl text-white">
-              X<span className="text-brand-blue">Sell</span>
-            </span>
-          </div>
+          <Logo className="mb-3.5" />
           <p className="text-sm text-[#9a9a9a] max-w-[360px]">
             Building digital experiences through Web, Mobile, AI &amp; IoT.
           </p>
@@ -67,7 +60,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <span className="text-xs text-[#9a9a9a]">© {new Date().getFullYear()} XSell. All rights reserved.</span>
+          <span className="text-xs text-[#9a9a9a]">© {new Date().getFullYear()} XSELL. All rights reserved.</span>
         </div>
       </div>
     </footer>
