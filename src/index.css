@@ -60,6 +60,15 @@
   .ticker-track, .hero-in, .hero-glow-blue, .hero-glow-green, .hero-gradient-text { animation: none !important; }
 }
 
+/* Work section: pale blue base, fine dot grid and a soft blue glow top-right */
+.work-bg {
+  background-color: #F6F9FD;
+  background-image:
+    radial-gradient(rgba(11,27,51,.13) 1.2px, transparent 1.2px),
+    radial-gradient(600px 400px at 90% 5%, rgba(31,136,228,.12), transparent 70%);
+  background-size: 24px 24px, 100% 100%;
+}
+
 /* Capability row sliding hover fill */
 .cap-row { position: relative; overflow: hidden; transition: padding-left .3s ease; }
 .cap-row::before {
