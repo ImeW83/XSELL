@@ -4,7 +4,7 @@ const followSocials = [
   { label: 'Instagram', href: '#' },
   { label: 'LinkedIn', href: '#' },
   { label: 'GitHub', href: '#' },
-  { label: 'WhatsApp', href: '#' },
+  { label: 'WhatsApp', href: 'https://wa.me/94767997796' },
 ];
 
 export default function Contact() {
@@ -108,7 +108,7 @@ export default function Contact() {
               </span>
               <div>
                 <div className="text-xs tracking-wide uppercase text-body">Email Us</div>
-                <div className="text-sm font-semibold text-ink">[YOUR EMAIL]</div>
+                <a href="mailto:tellxsell@gmail.com" className="text-sm font-semibold text-ink hover:text-accent-blue transition-colors">tellxsell@gmail.com</a>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function Contact() {
               </span>
               <div>
                 <div className="text-xs tracking-wide uppercase text-body">WhatsApp</div>
-                <div className="text-sm font-semibold text-ink">[YOUR WHATSAPP NUMBER]</div>
+                <a href="https://wa.me/94767997796" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-ink hover:text-accent-blue transition-colors">+94 76 799 7796</a>
               </div>
             </div>
           </div>
