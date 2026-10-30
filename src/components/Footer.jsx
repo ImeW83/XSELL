@@ -6,7 +6,7 @@ const footerSocials = [
   { tag: 'IG', href: '#' },
   { tag: 'FB', href: '#' },
   { tag: 'LI', href: '#' },
-  { tag: 'WA', href: '#' },
+  { tag: 'WA', href: 'https://wa.me/94767997796' },
 ];
 
 export default function Footer() {
@@ -43,8 +43,8 @@ export default function Footer() {
           </div>
           <div>
             <div className="text-xs font-bold tracking-[0.1em] text-white uppercase mb-4">Get In Touch</div>
-            <span className="block text-sm text-[#9a9a9a] mb-2.5">[YOUR EMAIL]</span>
-            <span className="block text-sm text-[#9a9a9a] mb-2.5">[YOUR WHATSAPP NUMBER]</span>
+            <a href="mailto:tellxsell@gmail.com" className="block text-sm text-[#9a9a9a] hover:text-white transition-colors mb-2.5 w-fit">tellxsell@gmail.com</a>
+            <a href="https://wa.me/94767997796" target="_blank" rel="noopener noreferrer" className="block text-sm text-[#9a9a9a] hover:text-white transition-colors mb-2.5 w-fit">+94 76 799 7796</a>
           </div>
         </div>
 
