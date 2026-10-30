@@ -16,6 +16,23 @@
 }
 .ticker-track { animation: ticker-scroll 32s linear infinite; }
 
+/* Page loader: a counter runs to 100%, then the screen splits open top and bottom */
+html.is-loading { overflow: hidden; }
+html.is-loading .hero-in { animation-play-state: paused; }
+.loader { position: fixed; inset: 0; z-index: 100; --p: 0; }
+.loader-half {
+  position: absolute; left: 0; right: 0; height: 50.5%; background: #07152B;
+  transition: transform .8s cubic-bezier(.7,0,.2,1) .15s;
+}
+.loader-half-top { top: 0; }
+.loader-half-bottom { bottom: 0; }
+.loader-content { position: absolute; inset: 0; transition: opacity .25s; }
+.loader-bar { width: calc(var(--p) * 1%); }
+.loader-open { pointer-events: none; }
+.loader-open .loader-content { opacity: 0; }
+.loader-open .loader-half-top { transform: translateY(-100%); }
+.loader-open .loader-half-bottom { transform: translateY(100%); }
+
 /* Hero entrance */
 @keyframes hero-in {
   from { opacity: 0; transform: translateY(18px); }
